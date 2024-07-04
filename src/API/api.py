@@ -5,9 +5,9 @@ def api_request():
     quantity=input('Сколько пользователей Вы хотите получить?')
     url = "https://randomuser.me/api/?results="
     url = "".join([url, quantity])
-    print("url:", url)
+    #print("url:", url)
 
-#
+
     response = requests.get(url)
 
     res=response.json()
@@ -15,12 +15,12 @@ def api_request():
         email=x['email']
         password=x['login']['password']
         dict = {'email':email, 'password':password}
-        print('email=',email)
-        print('password=', password)
+        #print('email=',email)
+        #print('password=', password)
         users.append(dict)
 
-    print(users)
-    print(email)
-    return users,email
+    #print(users)
+
+    return users
 
 
