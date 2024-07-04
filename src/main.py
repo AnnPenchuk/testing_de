@@ -18,8 +18,8 @@ import re
 
 
 # Logging settings
-#log_dir = os.path.join(os.getcwd(), "logs")
-#log_file = os.path.join(log_dir, "logfile.log")
+log_dir = os.path.join(os.getcwd(), "logs")
+log_file = os.path.join(log_dir, "logfile.log")
 
 
 
