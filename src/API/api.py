@@ -5,7 +5,7 @@ def api_request():
     quantity=input('Сколько пользователей Вы хотите получить?')
     url = "https://randomuser.me/api/?results="
     url = "".join([url, quantity])
-    #print("url:", url)
+
 
 
     response = requests.get(url)

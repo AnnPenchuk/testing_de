@@ -21,7 +21,6 @@ class Users_valid(BaseModel):
 
 def list_users(res):
     for i in res:
-        print(i)
         Users_valid.model_validate(i)
 
 
