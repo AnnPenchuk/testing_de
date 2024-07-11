@@ -1,22 +1,49 @@
 from Extracting.parsing import receiving_data
+#from src.settings import settings
 from Validation.valid import Users_valid, list_users
 from src.Extracting import connect_api
 from src.Extracting.connect_api import api_request
+from src.Loading.add_data import add_data
 from src.Loading.crud_data import insert,select,delete,update
 from src.Loading.database_creation import database_creation
 from src.Loading.connection import connection
+import logging
+
+logging.basicConfig(level=logging.INFO, filename="py_log.log",filemode="w",
+                    format="%(asctime)s %(levelname)s %(message)s")
+logging.debug("A DEBUG Message")
+logging.info("An INFO")
+logging.warning("A WARNING")
+logging.error("An ERROR")
+logging.critical("A message of CRITICAL severity")
+
+
 
 if __name__ == "__main__":
-    new=receiving_data()
-    #res2=list_users(res)
-    #database_creation()
-    name = 'registration_data2'
-    columns = 'email,username, password,password_md5,password_validation'
-    values = ('aynz.khrymy@example.com', 'username', 'password', 'password_md5', 'password_validation')
-    #insert(name, columns, values)
-    name = 'registration_data2'
-    columns = 'email'
-    condition = 'user_id =1'
-    print(new)
-    #update(new,name,columns,condition)
+    '''
+    n = input('укажите сколько пользователей хотите получить ')
+    try:
+        int(n)
+        print('Вы ввели ',n)
+    except:
+        print('Нужно указать целое число')
+    '''
+    n='2'
+    try:
+        res=receiving_data(n)
+    except:
+        print('Не удалось получить данные из API')
+    #print(res)
+    try:
+        new=list_users(res)
+    except:
+        print('Не удалось проверить правильность полученных данных')
+   # print(new)
+    try:
+        database_creation()
+    except:
+        print('Не удалось создать таблицы')
+    for i in new:
+        add_data(i)
 
+connection.close()

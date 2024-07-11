@@ -15,13 +15,13 @@ from src.Loading.connection import connection
 
 
 
-def insert(name,columns,values):
+def insert(connection,name,columns,values):
      cursor = connection.cursor()
      query = f'''INSERT INTO {name} ({columns}) VALUES {values}'''
-     print(query)
-     cursor.execute(query, values)
+     #print(query)
+     cursor.execute(query,values)
      cursor.close()
-     connection.close()
+     #connection.close()
 
 
 def select(name):
