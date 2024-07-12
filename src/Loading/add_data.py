@@ -47,6 +47,7 @@ def add_data(i):
         insert(connection,name, columns, values)
     except:
         print('Ну удалось добавить данные в таблицу ', name)
+        logging.error('Ну удалось добавить данные в таблицу ', name)
 
     name = 'cities3'
     columns = 'city_id,city,state,country,timezone_offset,timezone_description'
@@ -61,6 +62,7 @@ def add_data(i):
         insert(connection,name, columns, values)
     except:
         print('Ну удалось добавить данные в таблицу ', name)
+        logging.error('Ну удалось добавить данные в таблицу ', name)
 
     # name = 'registration_data2'
     # columns = 'email'

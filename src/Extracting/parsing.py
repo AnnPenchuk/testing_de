@@ -1,3 +1,5 @@
+import logging
+
 import requests
 from src.Extracting.connect_api import api_request
 def receiving_data(n):
@@ -7,6 +9,7 @@ def receiving_data(n):
         print('Выполнено подключение к API')
     except:
         print('Не удалось подключиться к API')
+        logging.error("Не удалось подключиться к API")
     for x in res:
         email=x.get('email')
         gender=x.get('gender')

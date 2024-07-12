@@ -49,7 +49,7 @@ def list_users(res):
     list_valid=[]
     for i in res:
         valid=Users_valid(
-            #email=i['email'],
+            email=i['email'],
             password=i['password'],
             gender= i['gender'],
             name_title=i['name_title'],
