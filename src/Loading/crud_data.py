@@ -16,12 +16,13 @@ from src.Loading.connection import connection
 
 
 def insert(connection,name,columns,values):
+    #вычислять id в insert
      cursor = connection.cursor()
-     query = f'''INSERT INTO {name} ({columns}) VALUES {values}'''
+     query = f'''INSERT INTO {name} ({columns}) VALUES {values}''' #RETURNING *'''
      #print(query)
      cursor.execute(query,values)
      cursor.close()
-     #connection.close()
+
 
 
 def select(name):

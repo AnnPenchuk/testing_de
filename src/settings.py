@@ -1,21 +1,19 @@
-from pydantic import BaseSettings, Field
-
-
-class Settings_DATABASE(BaseSettings):
-    user: str=Field(env='USER')
-    password: str = Field(env='PASSWORD')
-    host: str= Field(env='HOST')
-    port: int = Field(env='PORT')
-    name_database: str = Field(env='NAME_DATABASE')
-
-class Settings_API(BaseSettings):
-    url: str = Field(env='URL')
-
-
+from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
+import os
+from dotenv import load_dotenv
+'''
 class Settings(BaseSettings):
-    db=Settings_DATABASE()
-    api=Settings_API()
+     load_dotenv()
+     user = os.getenv('USER')
+     password= os.getenv('PASSWORD')
+     host= os.getenv('HOST')
+     port= os.getenv('PORT')
+     name_database= os.getenv('DB')
+     url= os.getenv('URL')
 
 
+#a=Settings.user
+#print(a)
 settings = Settings()
-
+'''
