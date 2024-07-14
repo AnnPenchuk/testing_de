@@ -15,13 +15,15 @@ from src.Loading.connection import connection
 
 
 
-def insert(connection,name,columns,values):
+def insert(connection,name,columns,values,foreign_key):
+    #with connection as cursor:
     #вычислять id в insert
-     cursor = connection.cursor()
-     query = f'''INSERT INTO {name} ({columns}) VALUES {values}''' #RETURNING *'''
-     #print(query)
-     cursor.execute(query,values)
-     cursor.close()
+    cursor = connection.cursor()
+    query = f'''INSERT INTO {name} ({columns}) VALUES {values} RETURNING {foreign_key}'''
+    cursor.execute(query,values)
+    res_id = cursor.fetchall()[0][0]
+    cursor.close()
+    return res_id
 
 
 

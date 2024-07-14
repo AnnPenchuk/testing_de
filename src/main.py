@@ -16,11 +16,11 @@ logging.basicConfig(level=logging.INFO, filename="py_log.log",filemode="w",
 
 if __name__ == "__main__":
   #  n = input('укажите сколько пользователей хотите получить ')
-    n='2'
+    n='1'
     res=receiving_data(api_request(n).get('results'))
     new=list_users(res)
     database_creation()
     for i in new:
             add_data(i)
-    print('Выполнено добавление данных')
+
 
