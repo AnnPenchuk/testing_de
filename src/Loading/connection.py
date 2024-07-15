@@ -1,16 +1,25 @@
+import logging
 import psycopg2
-from dotenv import load_dotenv
-#from src.settings import Settings
+from src.settings import settings
 
-#from src.settings import Settings_DATABASE
-#def connection():
-connection = psycopg2.connect(
-        host ="127.0.0.1",
-        user="admin",    #Settings.user,
-        password="password",
-        database="de_projects",
-        port = "6432"
-        )
-connection.autocommit=True
 
-#connection=connection()
+def connection():
+     try:
+          conn = psycopg2.connect(
+          host=settings.host,
+          user=settings.user,
+          password=settings.password,
+          database=settings.db_name,
+          port=settings.port
+          )
+          conn.autocommit = True
+          return conn
+     except:
+         print('не удалось подключиться к базе данных')
+         logging.error('не удалось подключиться к базе данных')
+
+
+
+
+
+

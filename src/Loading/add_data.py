@@ -1,15 +1,13 @@
 from src.Loading.crud_data import insert,select,delete,update
 from src.Loading.connection import connection
 
-def add_data(i):
+def add_data(i,connection):
     name = 'users3'
     columns = 'gender,name_title, name_first,name_last,age,nat'
     values = (i['gender'], i['name_title'], i['name_first'], i['name_last'], i['age'], i['nat'])
     foreign_key = 'user_id'
     try:
         number=insert(connection,name, columns, values,foreign_key)
-        print(number)
-
     except:
         print('Ну удалось добавить данные в таблицу ',name)
 
@@ -18,7 +16,6 @@ def add_data(i):
     values =(number, i['email'], i['username'], i['password'], i['password_md5'], i['password_validation'])
     try:
             insert(connection,name, columns, values,foreign_key)
-
     except:
             print('Ну удалось добавить данные в таблицу ',name)
 
@@ -29,7 +26,6 @@ def add_data(i):
             insert(connection,name, columns, values,foreign_key)
     except:
             print('Ну удалось добавить данные в таблицу ',name)
-
     name = 'contact_details3'
     columns = 'user_id, phone, cell'
     values = (number, i['phone'], i['cell'])
@@ -56,9 +52,4 @@ def add_data(i):
     except:
             print('Ну удалось добавить данные в таблицу ', name)
             logging.error('Ну удалось добавить данные в таблицу ', name)
-
-    # name = 'registration_data2'
-    # columns = 'email'
-    # condition = 'user_id =1'
-    # update(new,name,columns,condition)
 

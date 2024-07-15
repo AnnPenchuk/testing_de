@@ -1,19 +1,17 @@
 from pydantic import Field
-from pydantic_settings import BaseSettings, SettingsConfigDict
-import os
-from dotenv import load_dotenv
-'''
+from pydantic_settings import BaseSettings
+
+
 class Settings(BaseSettings):
-     load_dotenv()
-     user = os.getenv('USER')
-     password= os.getenv('PASSWORD')
-     host= os.getenv('HOST')
-     port= os.getenv('PORT')
-     name_database= os.getenv('DB')
-     url= os.getenv('URL')
+    user: str = Field(env='USER')
+    password: str = Field(env='PASSWORD')
+    host: str = Field(env='HOST')
+    port: int = Field(env='PORT')
+    db_name: str = Field(env='DB_NAME')
+
+    class Config:
+        env_file = 'C:/Users/annap/PycharmProjects/testing_de/.env.dev'
 
 
-#a=Settings.user
-#print(a)
 settings = Settings()
-'''
+

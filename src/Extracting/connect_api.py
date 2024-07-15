@@ -1,6 +1,6 @@
 import logging
 import requests
-#from src.settings import Settings_API
+
 
 
 def api_request(n):

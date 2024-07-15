@@ -1,7 +1,3 @@
-import logging
-
-from src.Extracting.connect_api import api_request
-
 
 def receiving_data(res):
     users = []
