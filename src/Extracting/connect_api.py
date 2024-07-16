@@ -1,20 +1,25 @@
 import logging
 import requests
 
+#from src.settings import settings
 
 
-def api_request(n):
-    quantity=n
-    url ="https://randomuser.me/api/?results="
-    url = "".join([url, quantity])
+
+
+
+def api_request(quantity: int) -> dict:
     try:
-        response = requests.get(url)
-        print('Выполнено подключение к API')
-    except:
-        print('Не удалось подключиться к API')
-        logging.error("Не удалось подключиться к API")
-    res = response.json()
-    return res
+        url = 'https://randomuser.me/api/?results='
+        url_ = "".join([url, str(quantity)])
+        print(url_)
+        response = requests.get(url_)
 
+        if response.status_code == 200:
+            logging.debug('Выполнено подключение к API')
+            return response.json()
+        else:
+            logging.error(f"Не удалось подключиться к API - status {response.status_code}")
+    except Exception as e:
+        logging.error(f"Не удалось подключиться к API.\n{e}")
 
 

@@ -4,21 +4,22 @@ from pydantic import BaseModel, EmailStr, Field
 import re
 
 
-def password_valid(password):
-	pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'
-	if re.match(pattern, password) is None:
-		password_validation='NO'
-	else:
-		password_validation = 'YES'
-	return password_validation
+def password_valid(password: str) -> str:
+    pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'
+    password_validation = 'YES'
+
+    if re.match(pattern, password) is None:
+        password_validation = 'NO'
+
+    return password_validation
 
 
-class Users_valid(BaseModel):
+class UsersValid(BaseModel):
     email: EmailStr
     password: str
-    gender: str = Field(max_lenght=10)
-    name_title: str = Field(max_lenght=50)
-    name_first: str = Field(max_lenght=50)
+    gender: str
+    name_title: str
+    name_first: str
     name_last: str = Field(max_lenght=50)
     street_number: int
     street_name: str = Field(max_lenght=50)
@@ -39,12 +40,11 @@ class Users_valid(BaseModel):
     timezone_description: str = Field(max_lenght=60)
 
 
-
 def list_users(res):
     list_valid = []
     try:
         for i in res:
-            valid = Users_valid(
+            valid = UsersValid(
                 email=i['email'],
                 password=i['password'],
                 gender=i['gender'],

@@ -1,3 +1,5 @@
+
+
 def database_creation(connection):
     with connection().cursor() as cursor:
             query = f'''CREATE TABLE IF NOT EXISTS users3 (
@@ -38,6 +40,9 @@ def database_creation(connection):
          REFERENCES locations3 (city_id)
              ON DELETE cascade)'''
             cursor.execute(query)
+
+
+
 
 
 

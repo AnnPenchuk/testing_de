@@ -1,17 +1,18 @@
-from pydantic import Field
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    user: str = Field(env='USER')
-    password: str = Field(env='PASSWORD')
-    host: str = Field(env='HOST')
-    port: int = Field(env='PORT')
-    db_name: str = Field(env='DB_NAME')
+    model_config = SettingsConfigDict(
+        env_file=("../.env.dev", "../.env.secret"),
+        env_file_encoding="utf-8",
+    )
 
-    class Config:
-        env_file = 'C:/Users/annap/PycharmProjects/testing_de/.env.dev'
+    host: str
+    db_name: str
+    user: str
+    password: str
+    port: int
+    url: str
 
 
 settings = Settings()
-

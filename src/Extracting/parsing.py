@@ -1,4 +1,5 @@
 
+
 def receiving_data(res):
     users = []
     for x in res:
@@ -33,4 +34,5 @@ def receiving_data(res):
                 'nat': nat, 'password_md5': password_md5, 'timezone_offset': timezone_offset,
                 'timezone_description': timezone_description, 'picture': picture}
         users.append(dict)
+
     return users

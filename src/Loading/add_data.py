@@ -1,7 +1,9 @@
 from src.Loading.crud_data import insert,select,delete,update
 from src.Loading.connection import connection
+from src.Loading.database_creation import database_creation
 
 def add_data(i,connection):
+    database_creation(connection)
     name = 'users3'
     columns = 'gender,name_title, name_first,name_last,age,nat'
     values = (i['gender'], i['name_title'], i['name_first'], i['name_last'], i['age'], i['nat'])

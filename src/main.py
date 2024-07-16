@@ -1,23 +1,23 @@
-from Extracting.parsing import receiving_data
-from Validation.valid import Users_valid, list_users
-from src.Extracting.connect_api import api_request
-from src.Loading.add_data import add_data
-from src.Loading.database_creation import database_creation
-from src.Loading.connection import connection
 import logging
-from dotenv import load_dotenv
-load_dotenv()
+from settings import settings
+from Extracting import extract
+from Validation import list_users
+from Loading import add_data, connection
 
-logging.basicConfig(level=logging.INFO, filename="py_log.log",filemode="w",
-                    format="%(asctime)s %(levelname)s %(message)s")
+logging.basicConfig(filename="py_log.log",
+                    filemode="w",
+                    level=logging.DEBUG,
+                    format="%(asctime)s %(levelname)s %(message)s",
+                    datefmt='%d/%m/%Y %I:%M:%S %p')
+
+def main(n):
+    res=extract(n)
+    new = list_users(res)
+    for i in new:
+        add_data(i, connection)
+
 
 if __name__ == "__main__":
-    n = input('укажите сколько пользователей хотите получить ')
-    #n='1'
-    res=receiving_data(api_request(n).get('results'))
-    new=list_users(res)
-    database_creation(connection)
-    for i in new:
-            add_data(i,connection)
-
-
+    # n = input('укажите сколько пользователей хотите получить ')
+    n='2'
+    main(n)

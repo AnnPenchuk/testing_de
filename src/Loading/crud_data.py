@@ -1,14 +1,13 @@
 from src.Loading.connection import connection
 
 
-def insert(connection,name,columns,values,foreign_key):
+def insert(connection, name,columns,values,foreign_key):
     with connection().cursor() as cursor:
         query = f'''INSERT INTO {name} ({columns}) VALUES {values} RETURNING {foreign_key}'''
         cursor.execute(query,values)
         print("данные добавлены в таблицу ",name)
         res_id = cursor.fetchall()[0][0]
         return res_id
-
 
 
 def select(name):
@@ -19,7 +18,6 @@ def select(name):
         res = cursor.fetchall()
         for i in res:
             print(i)
-
 
 
 def delete(name,condition):
