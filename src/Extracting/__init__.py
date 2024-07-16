@@ -2,4 +2,4 @@ __all__ = (
     "extract",
 )
 
-from extract import extract
+from src.Extracting.extract import extract

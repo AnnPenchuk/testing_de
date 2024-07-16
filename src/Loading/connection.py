@@ -1,9 +1,9 @@
 import logging
 import psycopg2
-from src.settings import settings
 
 
-def connection():
+
+def connection(settings):
      try:
           conn = psycopg2.connect(
           host=settings.host,
