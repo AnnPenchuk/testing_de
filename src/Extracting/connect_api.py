@@ -1,7 +1,6 @@
 import logging
 import requests
-
-#from src.settings import settings
+from src.settings import settings
 
 
 
@@ -9,9 +8,8 @@ import requests
 
 def api_request(quantity: int) -> dict:
     try:
-        url = 'https://randomuser.me/api/?results='
+        url=settings.url
         url_ = "".join([url, str(quantity)])
-        print(url_)
         response = requests.get(url_)
 
         if response.status_code == 200:

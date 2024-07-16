@@ -1,6 +1,5 @@
 __all__ = (
-    "add_data","connection"
+    "add_data",
 )
+from add_data import add_data
 
-from src.Loading.add_data import add_data
-from src.Loading.connection import connection

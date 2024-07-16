@@ -4,14 +4,14 @@ from pydantic import BaseModel, EmailStr, Field
 import re
 
 
-def password_valid(password: str) -> str:
-    pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'
-    password_validation = 'YES'
-
-    if re.match(pattern, password) is None:
-        password_validation = 'NO'
-
-    return password_validation
+def password_valid(password: str) -> bool:
+    # pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'
+    # password_validation = True
+    #
+    # if re.match(pattern, password) is None:
+    #     password_validation = False
+    # return password_validation
+    return True
 
 
 class UsersValid(BaseModel):
