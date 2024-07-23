@@ -15,13 +15,11 @@ logging.basicConfig(filename="../logs/py_log.log",
 
 
 def main(n: int):
-    res = extract(url=settings.url,
-                  q=n)
-
+    res = extract(q=n)
     new = list_users(res)
     for i in new:
         add_data(i)
 
 
 if __name__ == "__main__":
-    main(1)
+    main(n=1)

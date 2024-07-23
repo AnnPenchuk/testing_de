@@ -2,9 +2,10 @@ import logging
 import requests
 
 
-def api_request(url: str, quantity: int) -> dict:
+def api_request(quantity: int) -> dict:
     try:
-        url_ = "".join([url, str(quantity)])
+        url='https://randomuser.me/api/?results='
+        url_ ="".join([url, str(quantity)])
         response = requests.get(url_)
 
         if response.status_code == 200:
